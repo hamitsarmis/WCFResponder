@@ -129,13 +129,13 @@ partial class Program
                 await context.Request.Body.CopyToAsync(ms);
                 resultBuffer = ms.ToArray();
             }
-
             var requestMessage = GetRequestMessage(resultBuffer);
+            // TODO: Use requestMessage and create response accordingly 
             var serializedResponse = _response.Replace("{MESSAGE_ID}", Guid.NewGuid().ToString());
+
             var responseMessage = GetResponse(serializedResponse);
             return Results.File(responseMessage, contentType: "application/x-deflate");
         });
-
 
         app.Run();
     }
