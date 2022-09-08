@@ -99,7 +99,7 @@ partial class Program
         var newMessage = Message.CreateMessage(xdr, int.MaxValue, MessageVersion.Soap12WSAddressing10);
         MessageBuffer messageBuffer = newMessage.CreateBufferedCopy(int.MaxValue);
         Message message = messageBuffer.CreateMessage();
-        var buffer = _innerEncoder.WriteMessage(message, 2147483647, bufMan, 0);
+        var buffer = _innerEncoder.WriteMessage(message, int.MaxValue, bufMan, 0);
         return CompressBuffer(buffer, bufMan, 0).ToArray();
     }
 
